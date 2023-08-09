@@ -1,15 +1,19 @@
 version: '3.8'
 services:
-  db:
-    image: postgres:14.1-alpine
-    restart: always
-    environment:
-      - POSTGRES_USER=mostapchuk
-      - POSTGRES_PASSWORD=MOstapcuk
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
-      - '5434:5434'
-    volumes:
-      - db:/var/lib/postgresql/data
+      - "3000:3000"
+    depends_on:
+      - db
+  db:
+    image: postgres:latest
+    env_file:
+      - .env.local
+    ports:
+      - '5434:5432'
 volumes:
   db:
     driver: local
