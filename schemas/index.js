@@ -1,3 +1,3 @@
 const userSchemas = require('./userSchema')
 
-module.exports = userSchemas;
+module.exports = { userSchemas };

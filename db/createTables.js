@@ -23,6 +23,7 @@ const createTables = async () => {
         profileId  INTEGER UNIQUE REFERENCES "profile"(id) ON DELETE CASCADE
       );
     `);
+    await pool.query('COMMIT');
   } catch (error) {
     console.log(error.message);
   }
