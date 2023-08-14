@@ -6,7 +6,7 @@ const port = process.env.PORT || 3003;
 
 const startServer = async () => {
     try {
-               await createTables();
+        await createTables();
         app.listen(port, () => {
             console.log(`Server started on port ${port}`);
         });
