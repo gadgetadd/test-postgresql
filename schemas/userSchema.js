@@ -5,7 +5,7 @@ const userSchema = Joi.object({
     firstName: Joi.string().required(),
     lastName: Joi.string().required(),
     email: Joi.string().email().required(),
-    role: Joi.string().valid("admin", "employee").required(),
+    role: Joi.string().valid("admin", "user").required(),
     state: Joi.string().valid("male", "female").required(),
 });
 
@@ -14,8 +14,8 @@ const updateUserSchema = Joi.object({
     firstName: Joi.string(),
     lastName: Joi.string(),
     email: Joi.string().email(),
-    role: Joi.string().valid("admin", "employee"),
+    role: Joi.string().valid("admin", "user"),
     state: Joi.string().valid("male", "female"),
 });
 
-module.exports = { userSchema, updateUserSchema };
+module.exports = { addUserSchema, updateUserSchema };

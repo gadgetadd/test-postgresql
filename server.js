@@ -1,8 +1,18 @@
+require("dotenv").config();
 const app = require('./app')
-const createTables = require('./createTables');
-
-createTables();
+const { createTables } = require('./createTables');
 
 const port = process.env.PORT || 3003;
 
-app.listen(port, () => console.log(`Server started on port ${port}`));
+const startServer = async () => {
+    try {
+               await createTables();
+        app.listen(port, () => {
+            console.log(`Server started on port ${port}`);
+        });
+    } catch (error) {
+        console.error('Error creating database:', error);
+    }
+};
+
+startServer();

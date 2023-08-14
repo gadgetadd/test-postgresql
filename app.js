@@ -16,15 +16,13 @@ app.use(express.json());
 
 app.use('/api/users', usersRouter)
 
-module.exports = app;
-
 app.use((_, res) => {
     res.status(404).json({ message: 'Not found' })
 });
 
 app.use((err, req, res, next) => {
     const { message = "Server error" } = err;
-    const { statusCode = 500 } = res;
+    const { statusCode = 500 } = err;
     res.status(statusCode).json({ message })
 });
 
