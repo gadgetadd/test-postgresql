@@ -1,9 +1,12 @@
 const Pool = require('pg').Pool;
 
-const { DATABASE_URL } = process.env
 
 const pool = new Pool({
-    connectionString: DATABASE_URL,
+    user: 'user',
+    password: 'user',
+    host: "db",
+    database: 'users',
+    port: 5432
 });
 
 

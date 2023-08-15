@@ -12,7 +12,6 @@ const addUser = async (req, res, next) => {
         const userValues = [username, email, role, profileId];
         const userResult = await pool.query(queries.insertUserQuery, userValues);
         const { id } = userResult.rows[0];
-        console.log("id", id);
         const result = await pool.query(queries.getUserQuery, [id]);
         await pool.query('COMMIT');
         res.status(201).json(result.rows[0]);
