@@ -17,11 +17,14 @@ CREATE TABLE IF NOT EXISTS "user" (
     profileId  INTEGER REFERENCES "profile"(id) ON DELETE CASCADE
 );
 
-BEGIN;
-INSERT INTO "profile" (firstName, lastName, state)
-VALUES ('Max', 'Ostapchuk', 'male')
-RETURNING id INTO profile_id;
+DO $$ 
+DECLARE
+    profile_id INTEGER;
+BEGIN
+    INSERT INTO "profile" (firstName, lastName, state)
+    VALUES ('Max', 'Ostapchuk', 'male')
+    RETURNING id INTO profile_id;
 
-INSERT INTO "user" (username, email, role, profileId)
-VALUES ('mostapchuk', 'max@mail.com', 'user', profile_id);
-COMMIT;
+    INSERT INTO "user" (username, email, role, profileId)
+    VALUES ('exampleUser', 'max@mail.com', 'user', profile_id);
+END $$;
