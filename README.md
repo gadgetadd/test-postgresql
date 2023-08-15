@@ -30,7 +30,7 @@ docker-compose up
 
 * Отримання списку користувачів:
 
-        Запит: GET http://localhost:3003/api/users/
+Запит: GET http://localhost:3003/api/users/
         Фільтрація: Можливість відфільтрувати користувачів за полем "Role", вказавши значення ("user" або "admin"). Наприклад: GET http://localhost:3003/api/users/admin
 
 
@@ -51,7 +51,7 @@ docker-compose up
     Доступні варіанти:
         Role: admin або user,
         State: male або female,
-        
+
 
 * Редагування інформації про користувача:
 
